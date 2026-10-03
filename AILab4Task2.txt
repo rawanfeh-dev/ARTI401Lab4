@@ -1,0 +1,33 @@
+%lab4 Task2
+
+%1- the names of all females
+58 ?- female(X).
+X = sara ;
+X = nora.
+
+%2- whether there is any male
+59 ?- male(X).
+X = ali ;
+X = ahmad ;
+X = muhammad ;
+X = faisal ;
+X = hassan ;
+X = khan.
+
+%3- the grandparent of Faisal
+60 ?- parent(GP, P), parent(P, faisal).
+GP = ali,
+P = muhammad.
+
+%4- all daughters of Ahmad
+61 ?- parent(ahmad, X), female(X).
+X = sara ;
+X = nora.
+
+%5- whether Ahmad and Muhammad have a common parent
+62 ?- parent(P, ahmad), parent(P, muhammad).
+P = ali.
+
+%6- whether Khan is the brother of Nora
+63 ?- parent(P, khan), parent(P, nora), male(khan), khan \== nora.
+P = ahmad.

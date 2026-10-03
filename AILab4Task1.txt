@@ -1,0 +1,55 @@
+
+% Lab4 Task 1
+
+35 ?- house = house.
+true.
+
+% Explanation: The two atoms are identical, so unification succeeds.
+
+36 ?- house = abc.
+false.
+
+% Explanation: Two different constant atoms cannot be unified.
+
+37 ?- edge(a,b) = edge(C,b).
+C = a.
+
+% Explanation: Functors and argument counts match, and variable C is instantiated to atom 'a'.
+
+38 ?- edge(a,d) = edge(C,B).
+C = a,
+B = d.
+
+% Explanation: Matching structures instantiate variables C and B with the corresponding constants.
+
+39 ?- edge(C,B) = edge(a,d).
+C = a,
+B = d.
+
+% Explanation: Order of variables and constants does not affect unification; they match position by position.
+
+40 ?- edge(A,f(g,h)) = edge(a,B).
+A = a,
+B = f(g, h).
+
+% Explanation: Variable A unifies with constant 'a', and variable B unifies with the entire structure 'f(g,h)'.
+
+41 ?- edge(A,A) = edge(b,c).
+false.
+
+% Explanation: Since A is repeated, it must hold the exact same value in both positions. Here it clashes with constants 'b' and 'c'.
+
+42 ?- edge(A,A) = edge(b,b).
+A = b.
+
+% Explanation: The repeated variable A successfully unifies since both corresponding positions contain the same constant 'b'.
+
+43 ?- A = B, B = f.
+A = B, B = f.
+
+% Explanation: B is instantiated to 'f', and because A and B were linked by the first goal, A also takes the value 'f'.
+
+44 ?- A = B, B = f, A = e.
+false.
+
+% Explanation: A and B are both bound to 'f', but the final goal attempts to unify 'f' with 'e', which fails as two distinct constants cannot unify.
